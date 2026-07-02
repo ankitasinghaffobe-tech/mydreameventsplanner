@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dream — Premium Event Planning</title>
+<meta name="description" content="My Dream crafts extraordinary weddings, celebrations and corporate events for international clients who expect nothing less than perfection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF6F0;
+  --bg-secondary:#F1E9DE;
+  --accent:#8A5A34;
+  --accent-deep:#5B2A26;
+  --olive:#6E6B47;
+  --text-dark:#2B2521;
+  --text-secondary:#867C71;
+  --border:#E6DBCB;
+  --card:#FFFFFF;
+  --ink:#3B2A22;
+  --font-display:'Cormorant Garamond', serif;
+  --font-body:'Manrope', sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-dark);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+input{font:inherit;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;color:var(--text-dark);}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;display:block;margin-bottom:12px;}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 36px;font-family:var(--font-body);font-weight:600;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;border-radius:40px;transition:transform .4s var(--ease), box-shadow .4s var(--ease), background .35s ease, color .35s ease;}
+.btn-dark{background:var(--ink);color:#F3EAD9;box-shadow:0 14px 26px -14px rgba(59,42,34,.55);}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 18px 30px -12px rgba(59,42,34,.65);}
+.btn-outline{border:1px solid rgba(255,255,255,.7);color:#fff;}
+.btn-outline:hover{background:#fff;color:var(--ink);transform:translateY(-2px);}
+.magnetic{will-change:transform;}
+
+/* ===== SCROLL PROGRESS / CURSOR ===== */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--accent);z-index:1200;}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:30px 0;transition:padding .4s var(--ease), background .4s var(--ease), box-shadow .4s ease, border-color .4s ease;}
+.nav.is-scrolled{padding:16px 0;background:rgba(250,246,240,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);box-shadow:0 8px 26px -20px rgba(43,37,33,.3);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.nav-side{display:flex;gap:32px;flex:1;}
+.nav-side.right{justify-content:flex-end;align-items:center;}
+.nav-link{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:relative;color:var(--text-dark);}
+.nav.is-hero .nav-link, .nav.is-hero .nav-logo{color:#fff;}
+.nav-link::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent);transition:width .35s var(--ease);}
+.nav-link:hover::after{width:100%;}
+.nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.9rem;letter-spacing:.02em;text-align:center;flex-shrink:0;}
+.nav-icon{width:38px;height:38px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;}
+.nav-icon svg{width:15px;height:15px;}
+.nav-burger{display:none;flex-direction:column;gap:5px;width:24px;}
+.nav-burger span{height:1px;background:currentColor;width:100%;}
+.mobile-menu{position:fixed;inset:0;z-index:890;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateY(-100%);opacity:0;transition:transform .5s var(--ease), opacity .5s var(--ease);pointer-events:none;}
+.mobile-menu.is-open{transform:translateY(0);opacity:1;pointer-events:auto;}
+.mobile-link{font-family:var(--font-display);font-size:1.7rem;}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:flex-end;}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:heroZoom 18s ease-out forwards;}
+@keyframes heroZoom{to{transform:scale(1);}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,22,16,.15) 0%,rgba(30,22,16,.05) 45%,rgba(20,15,10,.55) 100%);}
+.hero-content{position:relative;z-index:2;width:100%;text-align:center;color:#fff;padding-bottom:150px;}
+.hero-title{font-size:clamp(2.3rem,5.6vw,4.3rem);line-height:1.12;letter-spacing:.01em;font-weight:400;}
+.hero-title em{font-style:italic;}
+.hero-sub{margin:20px auto 0;max-width:480px;font-size:.98rem;color:rgba(255,255,255,.85);letter-spacing:.02em;}
+.hero-actions{margin-top:36px;}
+.hero-curve{position:absolute;left:0;right:0;bottom:-2px;z-index:3;width:100%;height:auto;display:block;}
+
+/* ===== TAGLINE / FLORAL ===== */
+.tagline{padding:70px 0 40px;text-align:center;}
+.tagline-deco{width:64px;margin:0 auto 26px;color:var(--olive);}
+.tagline p{max-width:640px;margin:0 auto;font-family:var(--font-display);font-style:italic;font-size:1.4rem;line-height:1.5;color:var(--text-dark);}
+
+/* ===== ABOUT ===== */
+.about{padding:50px 0 130px;}
+.about-head{max-width:820px;margin:0 auto 50px;text-align:center;}
+.about-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.4;font-weight:400;}
+.about-head h2 strong,.about-head h2 .u{font-weight:600;color:var(--accent-deep);}
+.about-head h2 .u{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;}
+.about-body{display:grid;grid-template-columns:1fr 1fr;gap:70px;max-width:1000px;margin:0 auto 60px;}
+.about-body p{color:var(--text-secondary);font-size:.96rem;}
+.about-sign{margin-top:22px;}
+.about-sign span{display:block;font-size:.85rem;color:var(--text-secondary);margin-bottom:6px;}
+.about-sign strong{font-family:var(--font-display);font-style:italic;font-size:1.5rem;color:var(--accent-deep);}
+.about-media{position:relative;display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:end;max-width:980px;margin:0 auto;}
+.about-media img{width:100%;object-fit:cover;border-radius:6px;}
+.about-media .img-a{aspect-ratio:3/4;}
+.about-media .img-b{aspect-ratio:4/5;}
+.about-seal{position:absolute;left:36px;bottom:-40px;width:120px;height:120px;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:3;}
+.about-seal svg{width:100%;height:100%;}
+
+/* ===== SECTION HEAD (generic) ===== */
+.section-head{text-align:center;max-width:600px;margin:0 auto 60px;}
+.section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);}
+.section-head h2 strong{font-weight:600;color:var(--accent-deep);}
+
+/* ===== SERVICES ===== */
+.services{padding:60px 0 130px;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.svc-card{position:relative;border-radius:170px 170px 14px 14px;overflow:hidden;aspect-ratio:3/3.7;transition:transform .5s var(--ease), box-shadow .5s var(--ease);}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -28px rgba(43,37,33,.35);}
+.svc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
+.svc-card:hover img{transform:scale(1.08);}
+.svc-card .svc-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0) 55%,rgba(20,15,10,.62) 100%);}
+.svc-card .svc-label{position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-family:var(--font-body);font-weight:700;font-size:.85rem;letter-spacing:.32em;text-transform:uppercase;z-index:2;}
+.svc-card.svc-info{background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;gap:14px;}
+.svc-card.svc-info .svc-icon{width:40px;height:40px;color:var(--accent);}
+.svc-card.svc-info h4{font-size:1.15rem;font-weight:500;}
+.svc-card.svc-info p{font-size:.82rem;color:var(--text-secondary);max-width:20ch;}
+.svc-card.svc-info .btn{margin-top:6px;padding:11px 26px;font-size:.68rem;}
+
+/* ===== GALLERY ===== */
+.gallery{padding:40px 0 130px;background:var(--bg-secondary);}
+.gallery-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-top:70px;}
+.gallery-main{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/3.6;}
+.gallery-main img{width:100%;height:100%;object-fit:cover;}
+.gallery-caption{margin-top:18px;}
+.gallery-caption strong{display:block;font-family:var(--font-display);font-size:1.2rem;}
+.gallery-caption span{font-size:.8rem;color:var(--text-secondary);letter-spacing:.05em;}
+.gallery-side{display:grid;grid-template-rows:auto auto;gap:24px;}
+.gallery-side .gs-top{aspect-ratio:5/4;border-radius:8px;overflow:hidden;}
+.gallery-side .gs-bottom{aspect-ratio:4/5;border-radius:8px;overflow:hidden;max-width:78%;justify-self:end;}
+.gallery-side img{width:100%;height:100%;object-fit:cover;}
+.gallery-nav{display:flex;gap:12px;margin-top:26px;}
+.gallery-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color .3s ease, background .3s ease, color .3s ease;}
+.gallery-nav button:hover{background:var(--ink);border-color:var(--ink);color:#fff;}
+.gallery-nav svg{width:16px;height:16px;}
+.gallery-eyebrow-wrap{grid-column:1/-1;text-align:center;margin-bottom:-30px;}
+
+/* ===== PACKAGES ===== */
+.packages{padding:130px 0;}
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-items:center;}
+.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:150px 150px 14px 14px;padding:56px 34px 40px;text-align:center;transition:transform .5s var(--ease), box-shadow .5s var(--ease);}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -30px rgba(43,37,33,.3);}
+.pkg-card--dark{background:linear-gradient(180deg,#4A362B,#2E211A);color:#F3EAD9;transform:scale(1.05);box-shadow:0 40px 70px -30px rgba(43,37,33,.5);}
+.pkg-card--dark:hover{transform:scale(1.05) translateY(-8px);}
+.pkg-tier{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:block;}
+.pkg-card--dark .pkg-tier{color:#D9BD93;}
+.pkg-name{font-size:1.9rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px;}
+.pkg-features{margin-bottom:30px;}
+.pkg-features li{padding:9px 0;border-bottom:1px solid var(--border);font-size:.86rem;color:var(--text-secondary);}
+.pkg-card--dark .pkg-features li{border-color:rgba(243,234,217,.15);color:rgba(243,234,217,.8);}
+.pkg-features li:last-child{border-bottom:none;}
+.pkg-price{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:22px;}
+.pkg-card--dark .pkg-price{color:rgba(243,234,217,.6);}
+.pkg-price strong{display:block;font-family:var(--font-display);font-size:1.7rem;color:var(--text-dark);letter-spacing:0;text-transform:none;margin-top:4px;}
+.pkg-card--dark .pkg-price strong{color:#fff;}
+.pkg-card .btn{width:100%;}
+.pkg-card .btn-dark{background:var(--ink);}
+.pkg-card--dark .btn-dark{background:#D9BD93;color:#2E211A;}
+
+/* ===== TESTIMONIAL ===== */
+.testimonial{padding:60px 0 130px;background:var(--bg-secondary);}
+.testi-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.testi-copy{max-width:520px;}
+.testi-who{display:flex;align-items:center;gap:16px;margin-bottom:26px;}
+.testi-who svg{width:34px;height:34px;color:var(--olive);flex-shrink:0;}
+.testi-who strong{font-family:var(--font-display);font-size:1.15rem;display:block;}
+.testi-who span{font-size:.78rem;color:var(--text-secondary);}
+.testi-copy blockquote{font-family:var(--font-display);font-style:italic;font-size:1.6rem;line-height:1.5;color:var(--text-dark);}
+.testi-nav{display:flex;gap:12px;margin-top:32px;}
+.testi-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color .3s ease, background .3s ease, color .3s ease;}
+.testi-nav button:hover{background:var(--ink);border-color:var(--ink);color:#fff;}
+.testi-nav svg{width:16px;height:16px;}
+.testi-media{border-radius:8px;overflow:hidden;aspect-ratio:4/5;}
+.testi-media img{width:100%;height:100%;object-fit:cover;}
+
+/* ===== NEWSLETTER ===== */
+.newsletter{padding:90px 0;text-align:center;}
+.newsletter p{max-width:480px;margin:0 auto 30px;color:var(--text-secondary);font-size:.95rem;}
+.newsletter-form{max-width:460px;margin:0 auto;display:flex;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:6px;}
+.newsletter-form input{flex:1;border:none;background:transparent;padding:12px 18px;}
+.newsletter-form input:focus{outline:none;}
+.newsletter-form .btn{padding:13px 28px;font-size:.68rem;}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--bg-secondary);padding-top:70px;}
+.footer-deco{width:80px;margin:0 auto 50px;color:var(--olive);display:block;}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;}
+.footer-cta h2{font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.25;font-weight:400;}
+.footer-cta h2 strong{font-weight:600;color:var(--accent-deep);}
+.footer-col h5{font-family:var(--font-body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.footer-col a,.footer-col span{display:block;font-size:.88rem;color:var(--text-secondary);margin-bottom:12px;}
+.footer-col a:hover{color:var(--accent-deep);}
+.footer-bottom{border-top:1px solid var(--border);padding:26px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-social{display:flex;gap:16px;}
+.footer-social a{font-size:.72rem;letter-spacing:.1em;font-weight:700;color:var(--text-secondary);}
+.footer-social a:hover{color:var(--accent-deep);}
+.footer-legal{display:flex;gap:26px;font-size:.78rem;color:var(--text-secondary);}
+.footer-legal a:hover{color:var(--accent-deep);}
+.footer-copy{font-size:.78rem;color:var(--text-secondary);}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#F3EAD9;font-size:1.05rem;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .4s ease, transform .4s ease, visibility .4s ease;z-index:500;box-shadow:0 12px 24px -10px rgba(43,37,33,.5);}
+.back-to-top.is-visible{opacity:1;visibility:visible;transform:none;}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease), transform .9s var(--ease);transition-delay:var(--d,0s);}
+.reveal.is-visible{opacity:1;transform:none;}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1080px){
+  .about-body{grid-template-columns:1fr;gap:26px;max-width:560px;}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-inner,.testi-inner{grid-template-columns:1fr;gap:36px;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:860px){
+  .nav-side.left{display:none;}
+  .nav-side.right .nav-link{display:none;}
+  .nav-burger{display:flex;}
+  .nav-inner{justify-content:space-between;}
+  .packages-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
+  .pkg-card--dark{transform:none;}
+  .pkg-card--dark:hover{transform:translateY(-8px);}
+}
+@media (max-width:600px){
+  .wrap{padding:0 22px;}
+  .services-grid{grid-template-columns:1fr;}
+  .about-seal{position:static;margin:26px auto 0;}
+  .footer-top{grid-template-columns:1fr;gap:34px;}
+  .newsletter-form{flex-direction:column;border-radius:16px;}
+  .newsletter-form .btn{width:100%;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<header class="nav is-hero" id="siteNav">
+  <div class="wrap nav-inner">
+    <div class="nav-side left">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+    </div>
+    <a href="#home" class="nav-logo">My Dream</a>
+    <div class="nav-side right">
+      <a href="#gallery" class="nav-link">Portfolio</a>
+      <a href="#contact" class="nav-icon" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+      </a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" style="color:#fff;">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#gallery" class="mobile-link">Portfolio</a>
+  <a href="#packages" class="mobile-link">Packages</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <img src="https://source.unsplash.com/1800x1400/?wedding,couple,forest,embrace&sig=501" alt="Couple embracing beneath a floral arch">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Turning Your Wedding Dreams<br>Into <em>Ultimate Reality</em></h1>
+    <p class="hero-sub">Crafting every detail to shape your perfect wedding day.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-outline magnetic">Get Started</a>
+    </div>
+  </div>
+  <svg class="hero-curve" viewBox="0 0 1200 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,110 C300,0 900,0 1200,110 L1200,110 L0,110 Z" fill="#FAF6F0"></path>
+  </svg>
+</section>
+
+<!-- TAGLINE -->
+<section class="tagline">
+  <svg class="tagline-deco" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 4c0 20 0 36 0 56" stroke="var(--olive)" stroke-width="1.2"/>
+    <path d="M32 18c-8-6-16-4-16 4 8 2 12-1 16-4z" stroke="var(--accent-deep)" stroke-width="1.1"/>
+    <path d="M32 18c8-6 16-4 16 4-8 2-12-1-16-4z" stroke="var(--accent-deep)" stroke-width="1.1"/>
+    <path d="M32 34c-7-5-14-3-14 4 7 2 11-1 14-4z" stroke="var(--olive)" stroke-width="1.1"/>
+    <path d="M32 34c7-5 14-3 14 4-7 2-11-1-14-4z" stroke="var(--olive)" stroke-width="1.1"/>
+    <circle cx="32" cy="10" r="2.4" fill="var(--accent-deep)"/>
+  </svg>
+  <p class="reveal">"My Dream understood our story before we could put it into words — every detail felt like it belonged to us alone."</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-head">
+      <h2 class="reveal">Dedicated to <strong class="u">crafting</strong> extraordinary weddings, we bring years of expertise and a <strong>portfolio</strong> filled with unforgettable moments.</h2>
+    </div>
+    <div class="about-body">
+      <p class="reveal">Here, we understand that your wedding day is a chapter in your love story, and we're here to ensure it's a masterpiece. With years of expertise in orchestrating dream weddings, we've earned a reputation for creating unforgettable love moments.</p>
+      <div>
+        <p class="reveal">Our journey is woven with a passion for love, design, and meticulous planning. We are not casual event planners; we are professional memory curators dedicated to making your special day a reflection of your love story.</p>
+        <div class="about-sign reveal">
+          <span>With love,</span>
+          <strong>The My Dream Studio</strong>
+        </div>
+      </div>
+    </div>
+    <div class="about-media">
+      <img class="img-a reveal" src="https://source.unsplash.com/620x820/?bride,portrait,elegant&sig=502" alt="Bridal portrait">
+      <img class="img-b reveal" src="https://source.unsplash.com/860x1040/?wedding,dress,detail&sig=503" alt="Bride in an elegant wedding gown" style="--d:0.1s">
+      <div class="about-seal reveal" style="--d:0.2s" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs><path id="sealpath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+          <circle cx="60" cy="60" r="58" fill="none" stroke="var(--border)" stroke-width="1"/>
+          <circle cx="60" cy="60" r="46" fill="none" stroke="var(--accent)" stroke-width="1"/>
+          <text font-size="8.3" letter-spacing="2.2" fill="var(--accent-deep)" font-family="Manrope, sans-serif" font-weight="700">
+            <textPath href="#sealpath" startOffset="0%">CERTIFIED PLANNERS • EST. 2014 •</textPath>
+          </text>
+          <text x="60" y="65" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="22" fill="var(--accent-deep)">MD</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">What we offer</span>
+      <h2 class="reveal">Our <strong>Services</strong></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <img src="https://source.unsplash.com/560x700/?wedding,ceremony,floral,arch&sig=504" alt="Floral ceremony arch">
+        <div class="svc-tint"></div><span class="svc-label">Ceremony</span>
+      </div>
+      <div class="svc-card reveal" style="--d:0.06s">
+        <img src="https://source.unsplash.com/560x700/?wedding,catering,table&sig=505" alt="Wedding catering table">
+        <div class="svc-tint"></div><span class="svc-label">Catering</span>
+      </div>
+      <div class="svc-card reveal" style="--d:0.12s">
+        <img src="https://source.unsplash.com/560x700/?floral,decor,wreath&sig=506" alt="Floral decor wreath">
+        <div class="svc-tint"></div><span class="svc-label">Decor</span>
+      </div>
+      <div class="svc-card reveal" style="--d:0.18s">
+        <img src="https://source.unsplash.com/560x700/?groom,suit,flowers&sig=507" alt="Groom attire with boutonniere">
+        <div class="svc-tint"></div><span class="svc-label">Attire</span>
+      </div>
+      <div class="svc-card svc-info reveal" style="--d:0.24s">
+        <span class="svc-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="6" y="12" width="28" height="20" rx="2"/><circle cx="20" cy="22" r="6"/><path d="M14 12l2-4h8l2 4"/></svg></span>
+        <h4>Media</h4>
+        <p>Capture every moment with the artistry of our talented photographers &amp; videographers.</p>
+        <a href="#contact" class="btn btn-dark magnetic">Book Now</a>
+      </div>
+      <div class="svc-card reveal" style="--d:0.3s">
+        <img src="https://source.unsplash.com/560x700/?wedding,dress,walking,outdoor&sig=508" alt="Bride walking outdoors">
+        <div class="svc-tint"></div><span class="svc-label">Music</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-eyebrow-wrap">
+      <span class="eyebrow reveal">Gallery</span>
+      <h2 class="reveal">Latest <strong style="color:var(--accent-deep);font-weight:600;">Weddings</strong></h2>
+    </div>
+    <div class="gallery-inner">
+      <div class="reveal">
+        <div class="gallery-main">
+          <img id="galleryMainImg" src="https://source.unsplash.com/860x1000/?bridesmaids,wedding,walking&sig=509" alt="Bridal party walking together">
+        </div>
+        <div class="gallery-caption">
+          <strong id="galleryCoupleName">Gerald Johnson &amp; Erica Steward</strong>
+          <span id="galleryYear">2024</span>
+        </div>
+        <div class="gallery-nav">
+          <button id="galleryPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button id="galleryNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="gallery-side reveal" style="--d:0.15s">
+        <div class="gs-top"><img id="gallerySideTop" src="https://source.unsplash.com/700x480/?wedding,rings,hands&sig=510" alt="Wedding ring detail"></div>
+        <div class="gs-bottom"><img id="gallerySideBottom" src="https://source.unsplash.com/560x680/?couple,wedding,forest&sig=511" alt="Couple in a wooded setting"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Investment</span>
+      <h2 class="reveal">Our <strong>Packages</strong></h2>
+    </div>
+    <div class="packages-grid">
+      <div class="pkg-card reveal">
+        <span class="pkg-tier">Basic</span>
+        <h3 class="pkg-name">Silver</h3>
+        <ul class="pkg-features">
+          <li>Venue selection assistance</li>
+          <li>Wedding day coordination</li>
+          <li>Free floral arrangements</li>
+          <li>Free wedding consultation</li>
+        </ul>
+        <p class="pkg-price">Start from<strong>$5,000</strong></p>
+        <a href="#contact" class="btn btn-dark magnetic">Book Now</a>
+      </div>
+      <div class="pkg-card pkg-card--dark reveal" style="--d:0.1s">
+        <span class="pkg-tier">Best</span>
+        <h3 class="pkg-name">Gold</h3>
+        <ul class="pkg-features">
+          <li>Premium venue selection</li>
+          <li>Wedding day coordination</li>
+          <li>Free floral arrangements</li>
+          <li>Free catering &amp; photography</li>
+        </ul>
+        <p class="pkg-price">Start from<strong>$8,500</strong></p>
+        <a href="#contact" class="btn btn-dark magnetic">Book Now</a>
+      </div>
+      <div class="pkg-card reveal" style="--d:0.2s">
+        <span class="pkg-tier">Premium</span>
+        <h3 class="pkg-name">Platinum</h3>
+        <ul class="pkg-features">
+          <li>Full-service wedding planning</li>
+          <li>Wedding day coordination</li>
+          <li>Free floral arrangements</li>
+          <li>Free wedding consultation</li>
+        </ul>
+        <p class="pkg-price">Start from<strong>$12,000</strong></p>
+        <a href="#contact" class="btn btn-dark magnetic">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial" id="testimonials">
+  <div class="wrap testi-inner">
+    <div class="testi-copy reveal">
+      <div class="testi-who">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M20 4c0 12 0 22 0 32" stroke="var(--olive)" stroke-width="1.1"/><path d="M20 12c-5-4-10-2-10 3 5 1 8-1 10-3z" stroke="var(--accent-deep)" stroke-width="1"/><path d="M20 12c5-4 10-2 10 3-5 1-8-1-10-3z" stroke="var(--accent-deep)" stroke-width="1"/></svg>
+        <div>
+          <strong id="testiName">Ruffius Anderson &amp; Claurina Hazel</strong>
+          <span id="testiYear">2020</span>
+        </div>
+      </div>
+      <blockquote id="testiQuote">"My Dream made our wedding absolutely perfect. Their attention to detail and utter professionalism exceeded our expectations. We could not have asked for a better team to make our dream wedding a reality."</blockquote>
+      <div class="testi-nav">
+        <button id="testiPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button id="testiNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="testi-media reveal" style="--d:0.15s">
+      <img id="testiImg" src="https://source.unsplash.com/700x880/?groom,bouquet,wedding&sig=512" alt="Groom holding a bridal bouquet">
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="wrap">
+    <span class="eyebrow reveal">Stay close</span>
+    <p class="reveal">Stay in the loop with the latest trends, tips, and exclusive offers. Subscribe to our newsletter and be the first to know about upcoming My Dream events and promotions.</p>
+    <form class="newsletter-form reveal" id="newsletterForm">
+      <input type="email" placeholder="Enter your email address" required>
+      <button type="submit" class="btn btn-dark">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <svg class="footer-deco" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20c14-10 26-10 36 0 10-10 22-10 36 0" stroke="var(--accent-deep)" stroke-width="1.1"/>
+      <circle cx="40" cy="20" r="2.6" fill="var(--accent-deep)"/>
+      <circle cx="24" cy="14" r="1.6" fill="var(--olive)"/>
+      <circle cx="56" cy="14" r="1.6" fill="var(--olive)"/>
+    </svg>
+    <div class="footer-top">
+      <div class="footer-cta reveal">
+        <h2>Let us be the one who <strong>realizes</strong> your dream wedding ceremony.</h2>
+      </div>
+      <div class="footer-col reveal">
+        <h5>About</h5>
+        <a href="#about">Our Story</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col reveal">
+        <h5>Services</h5>
+        <a href="#services">Venue</a>
+        <a href="#services">Decoration</a>
+        <a href="#services">Band &amp; Music</a>
+        <a href="#services">Attire &amp; Gowns</a>
+      </div>
+      <div class="footer-col reveal">
+        <h5>Contact</h5>
+        <span>+1 (415) 555-0182</span>
+        <span>hello@mydream-events.com</span>
+        <span>21 Belgrave Crescent, London</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 My Dream Events. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#">TW</a><a href="#">FB</a><a href="#">IG</a>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Scroll progress + nav */
+  const nav = document.getElementById('siteNav');
+  const progress = document.getElementById('scrollProgress');
+  const backToTop = document.getElementById('backToTop');
+  const heroHeight = () => document.querySelector('.hero').offsetHeight;
+
+  function onScroll(){
+    const y = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (docH > 0 ? (y/docH)*100 : 0) + '%';
+    nav.classList.toggle('is-scrolled', y > 40);
+    nav.classList.toggle('is-hero', y < heroHeight() - 100);
+    backToTop.classList.toggle('is-visible', y > 600);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  backToTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  /* Mobile menu */
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false');
+  }));
+
+  /* Magnetic buttons */
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width/2;
+      const y = e.clientY - r.top - r.height/2;
+      btn.style.transform = `translate(${x*0.16}px, ${y*0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => btn.style.transform = '');
+  });
+
+  /* Reveal on scroll */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  /* Gallery slider (rotates through a small set of weddings) */
+  const galleries = [
+    { main:'https://source.unsplash.com/860x1000/?bridesmaids,wedding,walking&sig=509', top:'https://source.unsplash.com/700x480/?wedding,rings,hands&sig=510', bottom:'https://source.unsplash.com/560x680/?couple,wedding,forest&sig=511', name:'Gerald Johnson & Erica Steward', year:'2024' },
+    { main:'https://source.unsplash.com/860x1000/?wedding,reception,luxury&sig=520', top:'https://source.unsplash.com/700x480/?wedding,florals,table&sig=521', bottom:'https://source.unsplash.com/560x680/?bride,groom,dance&sig=522', name:'Amelia Cross & Daniel Osei', year:'2023' },
+    { main:'https://source.unsplash.com/860x1000/?destination,wedding,beach&sig=530', top:'https://source.unsplash.com/700x480/?wedding,bouquet,detail&sig=531', bottom:'https://source.unsplash.com/560x680/?couple,sunset,wedding&sig=532', name:'Priya Nair & Marco Lindqvist', year:'2023' }
+  ];
+  let gIndex = 0;
+  function renderGallery(){
+    const g = galleries[gIndex];
+    document.getElementById('galleryMainImg').src = g.main;
+    document.getElementById('gallerySideTop').src = g.top;
+    document.getElementById('gallerySideBottom').src = g.bottom;
+    document.getElementById('galleryCoupleName').textContent = g.name;
+    document.getElementById('galleryYear').textContent = g.year;
+  }
+  document.getElementById('galleryPrev').addEventListener('click', () => { gIndex = (gIndex-1+galleries.length)%galleries.length; renderGallery(); });
+  document.getElementById('galleryNext').addEventListener('click', () => { gIndex = (gIndex+1)%galleries.length; renderGallery(); });
+
+  /* Testimonial slider */
+  const testimonials = [
+    { quote:'"My Dream made our wedding absolutely perfect. Their attention to detail and utter professionalism exceeded our expectations. We could not have asked for a better team to make our dream wedding a reality."', name:'Ruffius Anderson & Claurina Hazel', year:'2020', img:'https://source.unsplash.com/700x880/?groom,bouquet,wedding&sig=512' },
+    { quote:'"We flew a crew across three time zones for our celebration, and My Dream ran it like it was down the street from their office. Nothing short of flawless."', name:'Charlotte Weiss & Julian Novak', year:'2022', img:'https://source.unsplash.com/700x880/?wedding,couple,elegant&sig=513' },
+    { quote:'"From the first call to the last dance, every detail felt considered. Our guests are still talking about it a year later."', name:'Renata Silva & Thomas Falk', year:'2021', img:'https://source.unsplash.com/700x880/?wedding,celebration,night&sig=514' }
+  ];
+  let tIndex = 0;
+  function renderTesti(){
+    const t = testimonials[tIndex];
+    document.getElementById('testiQuote').textContent = t.quote;
+    document.getElementById('testiName').textContent = t.name;
+    document.getElementById('testiYear').textContent = t.year;
+    document.getElementById('testiImg').src = t.img;
+  }
+  document.getElementById('testiPrev').addEventListener('click', () => { tIndex = (tIndex-1+testimonials.length)%testimonials.length; renderTesti(); });
+  document.getElementById('testiNext').addEventListener('click', () => { tIndex = (tIndex+1)%testimonials.length; renderTesti(); });
+
+  /* Newsletter */
+  const newsletterForm = document.getElementById('newsletterForm');
+  newsletterForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector('input');
+    input.placeholder = 'Thank you — subscribed!';
+    input.value = '';
+  });
+
+});
+</script>
+</body>
+</html>
